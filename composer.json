@@ -1,0 +1,29 @@
+{
+  "name": "adnanmula/lexicographic-ranking",
+  "description": "",
+  "license": "MIT",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Adnan Alfonso Mula Bakkar",
+      "email": "adnan.mula.bakkar@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.5",
+    "symfony/var-dumper": "^5.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "AdnanMula\\LexRanking\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "AdnanMula\\LexRanking\\Tests\\": "tests/"
+    }
+  }
+}
