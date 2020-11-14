@@ -4,11 +4,11 @@ namespace AdnanMula\LexRanking;
 
 use AdnanMula\LexRanking\Exception\InvalidInputException;
 
-final class Ranking
+final class RankingCalculator
 {
     private $config;
 
-    public function __construct(RankingConfig $config)
+    public function __construct(RankingCalculatorConfig $config)
     {
         $this->config = $config;
     }
@@ -24,18 +24,20 @@ final class Ranking
             $prevToken = $this->getChar($prev, $i);
             $nextToken = $this->getChar($next, $i);
 
-            $nextTokenIndex = (null !== $nextToken ? $this->getIndex($nextToken) : $this->getIndex($this->config->maxToken()));
+            $nextTokenIndex = null !== $nextToken
+                ? $this->config->tokenSet()->getIndex($nextToken)
+                : $this->config->tokenSet()->getIndex($this->config->tokenSet()->maxToken());
 
             if ((null !== $prevToken || null !== $nextToken)
                 && ($prevToken === $nextToken || $this->config->gap() >= $nextTokenIndex)) {
 
-                $rank .= $prevToken ?? $this->config->minToken();
+                $rank .= $prevToken ?? $this->config->tokenSet()->minToken();
                 $i++;
 
                 continue;
             }
 
-            $possibleTokenIndex = $this->getIndex($prevToken ?? $this->config->minToken()) + $this->config->gap();
+            $possibleTokenIndex = $this->config->tokenSet()->getIndex($prevToken ?? $this->config->tokenSet()->minToken()) + $this->config->gap();
 
             if ($possibleTokenIndex >= $nextTokenIndex) {
                 $rank .= $prevToken;
@@ -61,49 +63,20 @@ final class Ranking
         return $input[$i] ?? null;
     }
 
-    private function getToken(int $index): string
-    {
-        $tokenSet = $this->config->tokenSet();
-
-        if (\count($tokenSet) - 1 < $index) {
-            $index %= \count($tokenSet);
-        }
-
-        return (string) $tokenSet[$index];
-    }
-
-    private function getIndex(string $token)
-    {
-        $index = \array_search($token, $this->config->tokenSet(), true);
-
-        if (false === $index) {
-            throw new \InvalidArgumentException('Invalid token ' . $token);
-        }
-
-        return $index;
-    }
-
     private function next(?string $prev, ?string $next): string
     {
 //      TODO check if prev + gap > next -> mid = next - prev / 2
         if (null === $prev) {
-            return $this->getToken($this->config->gap());
+            return $this->config->tokenSet()->getToken($this->config->gap());
         }
 
-        return $this->getToken((int) ($this->getIndex($prev) + $this->config->gap()));
+        return $this->config->tokenSet()->getToken((int) ($this->config->tokenSet()->getIndex($prev) + $this->config->gap()));
     }
 
     private function assert(?string $prev, ?string $next): void
     {
-        $invalidTokens = \array_diff(
-            \array_merge(
-                $prev ? \str_split($prev) : [],
-                $next ? \str_split($next) : []
-            ),
-            $this->config->tokenSet()
-        );
-
-        if (\count($invalidTokens) > 0) {
+        if ((null !== $prev && false === $this->config->tokenSet()->isValid($prev))
+            || (null !== $next && false === $this->config->tokenSet()->isValid($next))) {
             throw new InvalidInputException();
         }
 
