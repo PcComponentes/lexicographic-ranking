@@ -1,6 +1,6 @@
 # Lexicographic Ranking
 
-###Usage
+### Usage
 
 ```php
 $calculator = new RankingCalculator(
@@ -20,5 +20,4 @@ The char pool to create the rankings. Numeric, alphanumeric36(only uppercase let
 To create a custom one implement TokenSetInterface. 
 
 ### Gap
-
 The space to be left before a ranking. With a gap of 1 the next ranking to 'A' would be 'B', with a gap of 8 that would be 'I'.  

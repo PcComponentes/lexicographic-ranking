@@ -30,7 +30,7 @@ abstract class TokenSet implements TokenSetInterface
         return (string) $this->set[$index];
     }
 
-    public function getIndex(string $token)
+    public function getIndex(string $token): int
     {
         $index = \array_search($token, $this->set, true);
 

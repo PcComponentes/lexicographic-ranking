@@ -6,8 +6,8 @@ interface TokenSetInterface
 {
     public function minToken(): string;
     public function maxToken(): string;
-    public function getIndex(string $token);
-    public function getToken(int $index);
+    public function getIndex(string $token): int;
+    public function getToken(int $index): string;
     public function toArray(): array;
     public function isValid(string $input): bool;
 }
