@@ -2,7 +2,7 @@
 
 namespace AdnanMula\LexRanking\Tests\DataProvider;
 
-final class Alpha32Gap8Provider extends DataProvider
+final class Alpha36Gap8Provider extends DataProvider
 {
     public function __construct()
     {
