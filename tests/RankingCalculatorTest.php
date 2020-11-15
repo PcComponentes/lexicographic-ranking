@@ -3,6 +3,7 @@
 namespace AdnanMula\LexRanking\Tests;
 
 use AdnanMula\LexRanking\Exception\InvalidGapException;
+use AdnanMula\LexRanking\Gap\Gap;
 use AdnanMula\LexRanking\RankingCalculator;
 use AdnanMula\LexRanking\RankingCalculatorConfig;
 use AdnanMula\LexRanking\Token\NumericTokenSet;
@@ -12,19 +13,22 @@ final class RankingCalculatorTest extends TestCase
 {
     /**
      * @test
-     * @dataProvider invalid_gap_provider
+     * @dataProvider invalid_fixed_gap_provider
      */
-    public function invalid_gap_test(int $gap): void
+    public function invalid_fixed_gap_test(?int $gap): void
     {
         $this->expectException(InvalidGapException::class);
 
         new RankingCalculator(
-            new RankingCalculatorConfig(new NumericTokenSet(), $gap)
+            new RankingCalculatorConfig(
+                new NumericTokenSet(),
+                new Gap(Gap::TYPE_FIXED_AMOUNT, $gap)
+            )
         );
     }
 
-    public function invalid_gap_provider(): array
+    public function invalid_fixed_gap_provider(): array
     {
-        return [[0], [-1], [-99]];
+        return [[null], [0], [-1], [-99]];
     }
 }

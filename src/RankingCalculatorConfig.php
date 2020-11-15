@@ -2,24 +2,17 @@
 
 namespace AdnanMula\LexRanking;
 
-use AdnanMula\LexRanking\Exception\InvalidGapException;
+use AdnanMula\LexRanking\Gap\Gap;
 use AdnanMula\LexRanking\Token\TokenSet;
 
 final class RankingCalculatorConfig
 {
-    public const DEFAULT_GAP = 8;
+    private TokenSet $tokenSet;
+    private Gap $gap;
 
-    private $tokenSet;
-    private $gap;
-
-    public function __construct(TokenSet $tokenSet, int $gap = self::DEFAULT_GAP)
+    public function __construct(TokenSet $tokenSet, Gap $gap)
     {
         $this->tokenSet = $tokenSet;
-
-        if ($gap < 1) {
-            throw new InvalidGapException();
-        }
-
         $this->gap = $gap;
     }
 
@@ -28,7 +21,7 @@ final class RankingCalculatorConfig
         return $this->tokenSet;
     }
 
-    public function gap(): int
+    public function gap(): Gap
     {
         return $this->gap;
     }

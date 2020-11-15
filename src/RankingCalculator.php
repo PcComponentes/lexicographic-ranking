@@ -3,11 +3,13 @@
 namespace AdnanMula\LexRanking;
 
 use AdnanMula\LexRanking\Exception\InvalidInputException;
+use AdnanMula\LexRanking\Gap\Gap;
+use AdnanMula\LexRanking\Token\TokenSet;
 
 final class RankingCalculator
 {
-    private $tokenSet;
-    private $gap;
+    private TokenSet $tokenSet;
+    private Gap $gap;
 
     public function __construct(RankingCalculatorConfig $config)
     {
@@ -31,14 +33,15 @@ final class RankingCalculator
                 : $this->tokenSet->getIndex($this->tokenSet->maxToken());
 
             if ((null !== $prevToken || null !== $nextToken)
-                && ($prevToken === $nextToken || $this->gap >= $nextTokenIndex)) {
+                && ($prevToken === $nextToken || $this->gap->value() >= $nextTokenIndex)) {
                 $rank .= $prevToken ?? $this->tokenSet->minToken();
                 $i++;
 
                 continue;
             }
 
-            $possibleTokenIndex = $this->tokenSet->getIndex($prevToken ?? $this->tokenSet->minToken()) + $this->gap;
+            $prevTokenIndex = $this->tokenSet->getIndex($prevToken ?? $this->tokenSet->minToken());
+            $possibleTokenIndex = $prevTokenIndex + $this->gap->value();
 
             if ($possibleTokenIndex >= $nextTokenIndex) {
                 $rank .= $prevToken;
@@ -47,7 +50,7 @@ final class RankingCalculator
                 continue;
             }
 
-            $rank .= self::next($prevToken, $nextToken);
+            $rank .= $this->tokenSet->next($this->gap, $prevToken, $nextToken);
 
             break;
         }
@@ -62,17 +65,6 @@ final class RankingCalculator
         }
 
         return $input[$i] ?? null;
-    }
-
-    private function next(?string $prev, ?string $next): string
-    {
-//      TODO encapsulate gap logic
-//      TODO check if prev + gap > next -> mid = next - prev / 2
-        if (null === $prev) {
-            return $this->tokenSet->getToken($this->gap);
-        }
-
-        return $this->tokenSet->getToken((int) ($this->tokenSet->getIndex($prev) + $this->gap));
     }
 
     private function assert(?string $prev, ?string $next): void

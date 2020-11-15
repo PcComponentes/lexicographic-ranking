@@ -3,6 +3,7 @@
 namespace AdnanMula\LexRanking\Tests;
 
 use AdnanMula\LexRanking\Exception\InvalidInputException;
+use AdnanMula\LexRanking\Gap\Gap;
 use AdnanMula\LexRanking\RankingCalculator;
 use AdnanMula\LexRanking\RankingCalculatorConfig;
 use AdnanMula\LexRanking\Tests\DataProvider\Alpha62Gap8Provider;
@@ -18,7 +19,12 @@ final class Alpha62SetRankingCalculatorTest extends TestCase
      */
     public function valid_alpha62_gap8_test(?string $prev, ?string $next, string $result): void
     {
-        $calculator = new RankingCalculator(new RankingCalculatorConfig(new Alpha62TokenSet(), 8));
+        $calculator = new RankingCalculator(
+            new RankingCalculatorConfig(
+                new Alpha62TokenSet(),
+                new Gap(Gap::TYPE_FIXED_AMOUNT, Gap::DEFAULT_VALUE)
+            )
+        );
 
         $this->assertEquals($result, $calculator->between($prev, $next));
     }
@@ -35,7 +41,12 @@ final class Alpha62SetRankingCalculatorTest extends TestCase
     {
         $this->expectException(InvalidInputException::class);
 
-        $calculator = new RankingCalculator(new RankingCalculatorConfig(new Alpha62TokenSet(), 8));
+        $calculator = new RankingCalculator(
+            new RankingCalculatorConfig(
+                new Alpha62TokenSet(),
+                new Gap(Gap::TYPE_FIXED_AMOUNT, Gap::DEFAULT_VALUE)
+            )
+        );
 
         $calculator->between($prev, $next);
     }

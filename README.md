@@ -22,8 +22,7 @@ NumericTokenSet (0-9)
 Alpha36TokenSet (0-9 and A-Z)
 Alpha62TokenSet (0-9 and A-z)
 ```
-
-To create a custom one extend TokenSet. 
+To create a custom one extend from TokenSet. 
 
 ### Gap
 The space to be left before a ranking. With a gap of 1 the next ranking to 'A' would be 'B', with a gap of 8 that would be 'I'.  

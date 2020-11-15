@@ -4,8 +4,8 @@ namespace AdnanMula\LexRanking\Tests\DataProvider;
 
 abstract class DataProvider implements \Iterator
 {
-    private $items;
-    private $index;
+    private array $items;
+    private int $index;
 
     protected function __construct(array $items)
     {
@@ -13,7 +13,7 @@ abstract class DataProvider implements \Iterator
         $this->index = 0;
     }
 
-    public function current()
+    public function current(): array
     {
         return $this->items[$this->index];
     }
@@ -23,7 +23,7 @@ abstract class DataProvider implements \Iterator
         $this->index++;
     }
 
-    public function key()
+    public function key(): int
     {
         return $this->index;
     }
