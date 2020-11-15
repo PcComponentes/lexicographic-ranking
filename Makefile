@@ -20,3 +20,13 @@ bash:
 
 logs:
 	docker-compose logs -f ${DOCKER_PHP_SERVICE}
+
+.PHONY: tests
+tests: ## execute project unit tests
+	docker-compose -f ./docker-compose.yml exec -T --user=$(id -u) php sh -c "php ./vendor/bin/phpunit ./tests"
+
+stan: ## pass phpstan
+	docker-compose -f ./docker-compose.yml exec -T --user=$(id -u) php sh -c "php -d memory_limit=256M vendor/bin/phpstan analyse -c phpstan.neon"
+
+cs: ## run phpcs checker
+	docker-compose -f ./docker-compose.yml exec -T --user=$(id -u) php sh -c "phpcs --standard=phpcs.xml.dist"
