@@ -16,11 +16,16 @@ jobs:
       - name: Install dependencies
         run: composer install --ignore-platform-reqs --prefer-dist --no-progress --no-suggest
 
+      - name: Build environment
+        run: |
+          make build
+          make up
+
       - name: Code sniffer
-        run: vendor/bin/phpcs --standard=phpcs.xml.dist
+        run: docker-compose -f ./docker-compose.yml exec -T --user=$(id -u) php sh -c "phpcs --standard=phpcs.xml.dist"
 
       - name: Unit tests
-        run: vendor/bin/phpunit ./tests
+        run: docker-compose -f ./docker-compose.yml exec -T --user=$(id -u) php sh -c "php ./vendor/bin/phpunit ./tests"
 
       - name: Php stan
-        run: vendor/bin/phpstan analyse -c phpstan.neon
+        run: docker-compose -f ./docker-compose.yml exec -T --user=$(id -u) php sh -c "php -d memory_limit=256M vendor/bin/phpstan analyse -c phpstan.neon"

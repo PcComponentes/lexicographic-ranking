@@ -10,8 +10,8 @@ final class Alpha62TokenSet extends TokenSet
             \array_merge(
                 \array_map('strval', \range('0', '9')),
                 \range('A', 'Z'),
-                \range('a', 'z')
-            )
+                \range('a', 'z'),
+            ),
         );
     }
 }
