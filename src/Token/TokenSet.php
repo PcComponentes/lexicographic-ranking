@@ -37,7 +37,7 @@ abstract class TokenSet implements TokenSetInterface
 
     public function isValid(string $input): bool
     {
-        return \count(\array_diff(\str_split($input), $this->set)) === 0;
+        return 0 === \count(\array_diff(\str_split($input), $this->set));
     }
 
     public function toArray(): array

@@ -15,7 +15,7 @@ final class RankingCalculator
         $this->gap = $config->gap();
     }
 
-    public function between(?string $prev, ?string $next)
+    public function between(?string $prev, ?string $next): string
     {
         $this->assert($prev, $next);
 
@@ -32,7 +32,6 @@ final class RankingCalculator
 
             if ((null !== $prevToken || null !== $nextToken)
                 && ($prevToken === $nextToken || $this->gap >= $nextTokenIndex)) {
-
                 $rank .= $prevToken ?? $this->tokenSet->minToken();
                 $i++;
 
@@ -78,7 +77,7 @@ final class RankingCalculator
 
     private function assert(?string $prev, ?string $next): void
     {
-        if ((null !== $prev && false === $this->tokenSet->isValid($prev))
+        if (null !== $prev && false === $this->tokenSet->isValid($prev)
             || (null !== $next && false === $this->tokenSet->isValid($next))) {
             throw new InvalidInputException();
         }

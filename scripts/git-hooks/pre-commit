@@ -1,0 +1,27 @@
+#!/bin/bash
+
+UNIT_TESTS_SCRIPT=vendor/bin/phpunit --order=random" 2>&1
+UNIT_TESTS_STATUS=$?
+
+echo "$UNIT_TESTS_SCRIPT"
+
+STAN_TESTS_SCRIPT=php -d memory_limit=256M vendor/bin/phpstan analyse -c phpstan.neon" 2>&1
+STAN_TESTS_STATUS=$?
+
+echo "$STAN_TESTS_SCRIPT"
+
+STYLE_SCRIPT=vendor/bin/phpcs --standard=phpcs.xml.dist" 2>&1
+STYLE_STATUS=$?
+
+echo "$STYLE_SCRIPT"
+
+if [ "$UNIT_TESTS_STATUS" = "0" ] && [ "$STAN_TESTS_STATUS" = "0" ] && [ "$STYLE_STATUS" = "0" ]; then
+    echo "Estoy totalmente de acuerdo contigo, el algoritmo intrinseco expuesto es brillante,"
+    echo "las posibles opciones en el desarrollo del pull request son infinitas, la claridad del commit es mayúscula,"
+    echo "pocas veces he tenido ocasión de leer una tarea tan amena,"
+    echo "con las task justas, con los aceptance criteria adecuados, sin florituras."
+    exit 0
+else
+    echo "Oh shit here we go again.";
+    exit 1
+fi

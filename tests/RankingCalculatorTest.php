@@ -14,7 +14,7 @@ final class RankingCalculatorTest extends TestCase
      * @test
      * @dataProvider invalid_gap_provider
      */
-    public function invalid_gap_test($gap): void
+    public function invalid_gap_test(int $gap): void
     {
         $this->expectException(InvalidGapException::class);
 
@@ -23,7 +23,7 @@ final class RankingCalculatorTest extends TestCase
         );
     }
 
-    public function invalid_gap_provider()
+    public function invalid_gap_provider(): array
     {
         return [[0], [-1], [-99]];
     }

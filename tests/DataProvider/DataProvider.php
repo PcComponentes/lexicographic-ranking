@@ -20,7 +20,7 @@ abstract class DataProvider implements \Iterator
 
     public function next(): void
     {
-        $this->index ++;
+        $this->index++;
     }
 
     public function key()
