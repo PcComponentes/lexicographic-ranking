@@ -6,11 +6,13 @@ use AdnanMula\LexRanking\Exception\InvalidInputException;
 
 final class RankingCalculator
 {
-    private $config;
+    private $tokenSet;
+    private $gap;
 
     public function __construct(RankingCalculatorConfig $config)
     {
-        $this->config = $config;
+        $this->tokenSet = $config->tokenSet();
+        $this->gap = $config->gap();
     }
 
     public function between(?string $prev, ?string $next)
@@ -25,19 +27,19 @@ final class RankingCalculator
             $nextToken = $this->getChar($next, $i);
 
             $nextTokenIndex = null !== $nextToken
-                ? $this->config->tokenSet()->getIndex($nextToken)
-                : $this->config->tokenSet()->getIndex($this->config->tokenSet()->maxToken());
+                ? $this->tokenSet->getIndex($nextToken)
+                : $this->tokenSet->getIndex($this->tokenSet->maxToken());
 
             if ((null !== $prevToken || null !== $nextToken)
-                && ($prevToken === $nextToken || $this->config->gap() >= $nextTokenIndex)) {
+                && ($prevToken === $nextToken || $this->gap >= $nextTokenIndex)) {
 
-                $rank .= $prevToken ?? $this->config->tokenSet()->minToken();
+                $rank .= $prevToken ?? $this->tokenSet->minToken();
                 $i++;
 
                 continue;
             }
 
-            $possibleTokenIndex = $this->config->tokenSet()->getIndex($prevToken ?? $this->config->tokenSet()->minToken()) + $this->config->gap();
+            $possibleTokenIndex = $this->tokenSet->getIndex($prevToken ?? $this->tokenSet->minToken()) + $this->gap;
 
             if ($possibleTokenIndex >= $nextTokenIndex) {
                 $rank .= $prevToken;
@@ -65,27 +67,33 @@ final class RankingCalculator
 
     private function next(?string $prev, ?string $next): string
     {
+//      TODO encapsulate gap logic
 //      TODO check if prev + gap > next -> mid = next - prev / 2
         if (null === $prev) {
-            return $this->config->tokenSet()->getToken($this->config->gap());
+            return $this->tokenSet->getToken($this->gap);
         }
 
-        return $this->config->tokenSet()->getToken((int) ($this->config->tokenSet()->getIndex($prev) + $this->config->gap()));
+        return $this->tokenSet->getToken((int) ($this->tokenSet->getIndex($prev) + $this->gap));
     }
 
     private function assert(?string $prev, ?string $next): void
     {
-        if ((null !== $prev && false === $this->config->tokenSet()->isValid($prev))
-            || (null !== $next && false === $this->config->tokenSet()->isValid($next))) {
+        if ((null !== $prev && false === $this->tokenSet->isValid($prev))
+            || (null !== $next && false === $this->tokenSet->isValid($next))) {
             throw new InvalidInputException();
         }
 
-//        if ($prev === $next) {
-//            throw new InvalidRankingInputException();
-//        }
+        if ((null !== $prev || null !== $next) && $prev === $next) {
+            throw new InvalidInputException();
+        }
+
+        if (null === $prev || null === $next) {
+            return;
+        }
 
         $lexicographicOrder = [$prev, $next];
         \natsort($lexicographicOrder);
+        $lexicographicOrder = \array_values($lexicographicOrder);
 
         if ($lexicographicOrder[0] !== $prev || $lexicographicOrder[1] !== $next) {
             throw new InvalidInputException();

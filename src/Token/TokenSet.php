@@ -32,13 +32,7 @@ abstract class TokenSet implements TokenSetInterface
 
     public function getIndex(string $token): int
     {
-        $index = \array_search($token, $this->set, true);
-
-        if (false === $index) {
-            throw new \InvalidArgumentException('Invalid token ' . $token);
-        }
-
-        return $index;
+        return \array_search($token, $this->set, true);
     }
 
     public function isValid(string $input): bool
