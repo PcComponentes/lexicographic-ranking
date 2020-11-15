@@ -3,7 +3,7 @@
 namespace AdnanMula\LexRanking;
 
 use AdnanMula\LexRanking\Exception\InvalidGapException;
-use AdnanMula\LexRanking\Token\TokenSetInterface;
+use AdnanMula\LexRanking\Token\TokenSet;
 
 final class RankingCalculatorConfig
 {
@@ -12,7 +12,7 @@ final class RankingCalculatorConfig
     private $tokenSet;
     private $gap;
 
-    public function __construct(TokenSetInterface $tokenSet, int $gap = self::DEFAULT_GAP)
+    public function __construct(TokenSet $tokenSet, int $gap = self::DEFAULT_GAP)
     {
         $this->tokenSet = $tokenSet;
 
@@ -23,7 +23,7 @@ final class RankingCalculatorConfig
         $this->gap = $gap;
     }
 
-    public function tokenSet(): TokenSetInterface
+    public function tokenSet(): TokenSet
     {
         return $this->tokenSet;
     }

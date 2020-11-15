@@ -2,7 +2,7 @@
 
 namespace AdnanMula\LexRanking\Token;
 
-abstract class TokenSet implements TokenSetInterface
+abstract class TokenSet
 {
     protected $set;
 

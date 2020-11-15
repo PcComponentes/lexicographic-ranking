@@ -18,6 +18,13 @@
     "phpunit/phpunit": "^8.5",
     "symfony/var-dumper": "^5.1"
   },
+  "scripts": {
+    "post-install-cmd": [
+      "@auto-scripts",
+      "rm -rf .git/hooks",
+      "cp -r scripts/git-hooks .git/hooks"
+    ]
+  },
   "autoload": {
     "psr-4": {
       "AdnanMula\\LexRanking\\": "src/"
