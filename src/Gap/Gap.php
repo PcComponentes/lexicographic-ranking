@@ -16,9 +16,7 @@ final class Gap
 
     public function __construct(string $type, ?int $value)
     {
-        if (self::TYPE_FIXED_AMOUNT === $type && (null === $value || 0 >= $value)) {
-            throw new InvalidGapException();
-        }
+        $this->assert($type, $value);
 
         $this->type = $type;
         $this->value = $value;
@@ -32,5 +30,16 @@ final class Gap
     public function value(): ?int
     {
         return $this->value;
+    }
+
+    private function assert(string $type, ?int $value): void
+    {
+        if (false === \in_array($type, [self::TYPE_DYNAMIC_MID, self::TYPE_FIXED_AMOUNT], true)) {
+            throw new InvalidGapException();
+        }
+
+        if (self::TYPE_FIXED_AMOUNT === $type && (null === $value || 0 >= $value)) {
+            throw new InvalidGapException();
+        }
     }
 }

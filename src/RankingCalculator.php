@@ -25,23 +25,19 @@ final class RankingCalculator
         $i = 0;
 
         while (true) {
-            $prevToken = $this->getChar($prev, $i);
-            $nextToken = $this->getChar($next, $i);
+            $prevToken = $prev[$i] ?? $this->tokenSet->minToken();
+            $nextToken = $next[$i] ?? $this->tokenSet->maxToken();
 
-            $nextTokenIndex = null !== $nextToken
-                ? $this->tokenSet->getIndex($nextToken)
-                : $this->tokenSet->getIndex($this->tokenSet->maxToken());
+            $nextTokenIndex = $this->tokenSet->getIndex($nextToken);
 
-            if ((null !== $prevToken || null !== $nextToken)
-                && ($prevToken === $nextToken || $this->gap->value() >= $nextTokenIndex)) {
-                $rank .= $prevToken ?? $this->tokenSet->minToken();
+            if ($prevToken === $nextToken || $this->gap->value() >= $nextTokenIndex) {
+                $rank .= $prevToken;
                 $i++;
 
                 continue;
             }
 
-            $prevTokenIndex = $this->tokenSet->getIndex($prevToken ?? $this->tokenSet->minToken());
-            $possibleTokenIndex = $prevTokenIndex + $this->gap->value();
+            $possibleTokenIndex = $this->tokenSet->getIndex($prevToken) + $this->gap->value();
 
             if ($possibleTokenIndex >= $nextTokenIndex) {
                 $rank .= $prevToken;
@@ -56,15 +52,6 @@ final class RankingCalculator
         }
 
         return $rank;
-    }
-
-    private function getChar(?string $input, int $i): ?string
-    {
-        if (null === $input) {
-            return null;
-        }
-
-        return $input[$i] ?? null;
     }
 
     private function assert(?string $prev, ?string $next): void
