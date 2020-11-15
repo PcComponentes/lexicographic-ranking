@@ -1,0 +1,26 @@
+name: pipeline
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: composer install --ignore-platform-reqs --prefer-dist --no-progress --no-suggest
+
+      - name: Code sniffer
+        run: vendor/bin/phpcs --standard=phpcs.xml.dist
+
+      - name: Unit tests
+        run: vendor/bin/phpunit ./tests
+
+      - name: Php stan
+        run: vendor/bin/phpstan analyse -c phpstan.neon
