@@ -9,6 +9,8 @@ abstract class DataProvider implements \Iterator
 
     protected function __construct(array $items)
     {
+        $this->assert($items);
+
         $this->items = $items;
         $this->index = 0;
     }
@@ -36,5 +38,14 @@ abstract class DataProvider implements \Iterator
     public function rewind(): void
     {
         $this->index = 0;
+    }
+
+    private function assert(array $items): void
+    {
+        foreach ($items as $item) {
+            if (false === is_array($item)) {
+                throw new \InvalidArgumentException('Invalid DataProvider data.');
+            }
+        }
     }
 }

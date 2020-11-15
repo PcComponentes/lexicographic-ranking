@@ -27,6 +27,12 @@ final class Alpha36Gap8Provider
                         ['F6', null, 'N'],
                         ['W8', 'Z', 'WG'],
                         ['W', 'Z', 'W8'],
+                        ['7', 'G', 'F'],
+                        [null, 'G', '8'],
+                        ['00001', 'Z', '8'],
+                        ['ASDF5T', 'ASDF5Z', 'ASDF5T8'],
+                        ['ASDF', 'ASDF5Z', 'ASDF08'],
+                        ['7', null, 'F'],
                     ]
                 );
             }
@@ -57,8 +63,10 @@ final class Alpha36Gap8Provider
                         ['ك', null],
                         ['ب', null],
                         ['Б', null],
+                        ['Б1', 'Б'],
                         ['Х', null],
                         ['Ѭ', null],
+                        ['Ѭ', 'Ѭ'],
                         [null, 'a'],
                         [null, '\''],
                         [null, '´'],
