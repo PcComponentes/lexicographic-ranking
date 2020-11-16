@@ -45,7 +45,7 @@ abstract class TokenSet
         return $index;
     }
 
-    public function next(Position $position, string $prev, string $next): string
+    public function mid(Position $position, string $prev, string $next): ?string
     {
         if (Position::TYPE_DYNAMIC_MID === $position->type()) {
 //              TODO check if prev + gap > next -> mid = next - prev / 2
@@ -56,7 +56,23 @@ abstract class TokenSet
             throw new InvalidPositionException();
         }
 
-        return $this->getToken($this->getIndex($prev) + $position->gap());
+        if (Position::TYPE_FIXED_GAP_START === $position->type()) {
+            if ($this->getIndex($prev) + $position->gap() >= $this->getIndex($next)) {
+                return null;
+            }
+
+            return $this->getToken($this->getIndex($prev) + $position->gap());
+        }
+
+        if (Position::TYPE_FIXED_GAP_END === $position->type()) {
+            if ($this->getIndex($next) - $position->gap() < 0) {
+                return null;
+            }
+
+            return $this->getToken($this->getIndex($next) - $position->gap());
+        }
+
+        throw new InvalidPositionException();
     }
 
     public function isValid(string $input): bool

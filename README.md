@@ -4,10 +4,8 @@
 
 ```php
 $calculator = new RankingCalculator(
-    new RankingCalculatorConfig(
-        new Alpha36TokenSet(),
-        new Position(Position::TYPE_FIXED_GAP_START, Position::DEFAULT_GAP)
-    )
+    new Alpha36TokenSet(),
+    new Position(Position::TYPE_FIXED_GAP_START, Position::DEFAULT_GAP)
 );
 
 $calculator->between('AAA', 'ZZZ');

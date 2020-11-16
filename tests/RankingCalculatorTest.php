@@ -5,7 +5,6 @@ namespace AdnanMula\LexRanking\Tests;
 use AdnanMula\LexRanking\Exception\InvalidPositionException;
 use AdnanMula\LexRanking\Position\Position;
 use AdnanMula\LexRanking\RankingCalculator;
-use AdnanMula\LexRanking\RankingCalculatorConfig;
 use AdnanMula\LexRanking\Token\NumericTokenSet;
 use PHPUnit\Framework\TestCase;
 
@@ -20,10 +19,8 @@ final class RankingCalculatorTest extends TestCase
         $this->expectException(InvalidPositionException::class);
 
         new RankingCalculator(
-            new RankingCalculatorConfig(
-                new NumericTokenSet(),
-                new Position(Position::TYPE_FIXED_GAP_START, $gap),
-            ),
+            new NumericTokenSet(),
+            new Position(Position::TYPE_FIXED_GAP_START, $gap),
         );
     }
 

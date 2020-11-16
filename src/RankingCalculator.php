@@ -11,10 +11,10 @@ final class RankingCalculator
     private TokenSet $tokenSet;
     private Position $position;
 
-    public function __construct(RankingCalculatorConfig $config)
+    public function __construct(TokenSet $tokenSet, Position $position)
     {
-        $this->tokenSet = $config->tokenSet();
-        $this->position = $config->position();
+        $this->tokenSet = $tokenSet;
+        $this->position = $position;
     }
 
     public function between(?string $prev, ?string $next): string
@@ -28,17 +28,16 @@ final class RankingCalculator
             $prevToken = $prev[$i] ?? $this->tokenSet->minToken();
             $nextToken = $next[$i] ?? $this->tokenSet->maxToken();
 
-            $nextTokenIndex = $this->tokenSet->getIndex($nextToken);
-            $possibleTokenIndex = $this->tokenSet->getIndex($prevToken) + $this->position->gap();
+            $possibleToken = $this->tokenSet->mid($this->position, $prevToken, $nextToken);
 
-            if ($possibleTokenIndex >= $nextTokenIndex) {
+            if (null === $possibleToken) {
                 $rank .= $prevToken;
                 $i++;
 
                 continue;
             }
 
-            $rank .= $this->tokenSet->getToken($possibleTokenIndex);
+            $rank .= $possibleToken;
 
             break;
         }
