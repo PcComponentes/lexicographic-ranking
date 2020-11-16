@@ -33,7 +33,7 @@ final class Alpha36Gap8Provider
                         ['ASDF5T', 'ASDF5Z', 'ASDF5T8'],
                         ['ASDF', 'ASDF5Z', 'ASDF08'],
                         ['7', null, 'F'],
-                    ]
+                    ],
                 );
             }
         };
@@ -79,7 +79,7 @@ final class Alpha36Gap8Provider
                         [null, 'Ѭ'],
                         ['Z6', 'Z'],
                         ['F6', 'F'],
-                    ]
+                    ],
                 );
             }
         };

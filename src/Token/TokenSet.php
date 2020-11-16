@@ -2,9 +2,9 @@
 
 namespace AdnanMula\LexRanking\Token;
 
-use AdnanMula\LexRanking\Exception\InvalidGapException;
+use AdnanMula\LexRanking\Exception\InvalidPositionException;
 use AdnanMula\LexRanking\Exception\InvalidInputException;
-use AdnanMula\LexRanking\Gap\Gap;
+use AdnanMula\LexRanking\Position\Position;
 
 abstract class TokenSet
 {
@@ -45,18 +45,18 @@ abstract class TokenSet
         return $index;
     }
 
-    public function next(Gap $gap, string $prev, string $next): string
+    public function next(Position $position, string $prev, string $next): string
     {
-        if (Gap::TYPE_DYNAMIC_MID === $gap->type()) {
+        if (Position::TYPE_DYNAMIC_MID === $position->type()) {
 //              TODO check if prev + gap > next -> mid = next - prev / 2
             throw new \Exception('Mid gap type not supported yet');
         }
 
-        if (null === $gap->value()) {
-            throw new InvalidGapException();
+        if (null === $position->gap()) {
+            throw new InvalidPositionException();
         }
 
-        return $this->getToken($this->getIndex($prev) + $gap->value());
+        return $this->getToken($this->getIndex($prev) + $position->gap());
     }
 
     public function isValid(string $input): bool

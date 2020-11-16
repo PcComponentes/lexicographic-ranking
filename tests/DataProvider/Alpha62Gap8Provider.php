@@ -26,7 +26,7 @@ final class Alpha62Gap8Provider
                         ['AaD3rtT', 'At', 'Ai'],
                         ['ZNTbx8XnWx', 'imHgQJWlyw', 'h'],
                         ['ZNTbx8XnWx', 'ZNTbx8XnWz', 'ZNTbx8XnWx8'],
-                    ]
+                    ],
                 );
             }
         };
@@ -69,7 +69,7 @@ final class Alpha62Gap8Provider
                         [null, 'Б'],
                         [null, 'Х'],
                         [null, 'Ѭ'],
-                    ]
+                    ],
                 );
             }
         };

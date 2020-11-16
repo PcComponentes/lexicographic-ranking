@@ -3,18 +3,18 @@
 namespace AdnanMula\LexRanking;
 
 use AdnanMula\LexRanking\Exception\InvalidInputException;
-use AdnanMula\LexRanking\Gap\Gap;
+use AdnanMula\LexRanking\Position\Position;
 use AdnanMula\LexRanking\Token\TokenSet;
 
 final class RankingCalculator
 {
     private TokenSet $tokenSet;
-    private Gap $gap;
+    private Position $position;
 
     public function __construct(RankingCalculatorConfig $config)
     {
         $this->tokenSet = $config->tokenSet();
-        $this->gap = $config->gap();
+        $this->position = $config->position();
     }
 
     public function between(?string $prev, ?string $next): string
@@ -30,14 +30,14 @@ final class RankingCalculator
 
             $nextTokenIndex = $this->tokenSet->getIndex($nextToken);
 
-            if ($prevToken === $nextToken || $this->gap->value() >= $nextTokenIndex) {
+            if ($prevToken === $nextToken || $this->position->gap() >= $nextTokenIndex) {
                 $rank .= $prevToken;
                 $i++;
 
                 continue;
             }
 
-            $possibleTokenIndex = $this->tokenSet->getIndex($prevToken) + $this->gap->value();
+            $possibleTokenIndex = $this->tokenSet->getIndex($prevToken) + $this->position->gap();
 
             if ($possibleTokenIndex >= $nextTokenIndex) {
                 $rank .= $prevToken;
@@ -46,7 +46,7 @@ final class RankingCalculator
                 continue;
             }
 
-            $rank .= $this->tokenSet->next($this->gap, $prevToken, $nextToken);
+            $rank .= $this->tokenSet->next($this->position, $prevToken, $nextToken);
 
             break;
         }

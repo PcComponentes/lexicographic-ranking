@@ -2,18 +2,18 @@
 
 namespace AdnanMula\LexRanking;
 
-use AdnanMula\LexRanking\Gap\Gap;
+use AdnanMula\LexRanking\Position\Position;
 use AdnanMula\LexRanking\Token\TokenSet;
 
 final class RankingCalculatorConfig
 {
     private TokenSet $tokenSet;
-    private Gap $gap;
+    private Position $position;
 
-    public function __construct(TokenSet $tokenSet, Gap $gap)
+    public function __construct(TokenSet $tokenSet, Position $position)
     {
         $this->tokenSet = $tokenSet;
-        $this->gap = $gap;
+        $this->position = $position;
     }
 
     public function tokenSet(): TokenSet
@@ -21,8 +21,8 @@ final class RankingCalculatorConfig
         return $this->tokenSet;
     }
 
-    public function gap(): Gap
+    public function position(): Position
     {
-        return $this->gap;
+        return $this->position;
     }
 }

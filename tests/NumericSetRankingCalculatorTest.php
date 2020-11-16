@@ -3,7 +3,7 @@
 namespace AdnanMula\LexRanking\Tests;
 
 use AdnanMula\LexRanking\Exception\InvalidInputException;
-use AdnanMula\LexRanking\Gap\Gap;
+use AdnanMula\LexRanking\Position\Position;
 use AdnanMula\LexRanking\RankingCalculator;
 use AdnanMula\LexRanking\RankingCalculatorConfig;
 use AdnanMula\LexRanking\Tests\DataProvider\DataProvider;
@@ -22,8 +22,8 @@ final class NumericSetRankingCalculatorTest extends TestCase
         $calculator = new RankingCalculator(
             new RankingCalculatorConfig(
                 new NumericTokenSet(),
-                new Gap(Gap::TYPE_FIXED_AMOUNT, Gap::DEFAULT_VALUE)
-            )
+                new Position(Position::TYPE_FIXED_GAP_START, Position::DEFAULT_GAP),
+            ),
         );
 
         $this->assertEquals($result, $calculator->between($prev, $next));
@@ -45,8 +45,8 @@ final class NumericSetRankingCalculatorTest extends TestCase
         $calculator = new RankingCalculator(
             new RankingCalculatorConfig(
                 new NumericTokenSet(),
-                new Gap(Gap::TYPE_FIXED_AMOUNT, Gap::DEFAULT_VALUE)
-            )
+                new Position(Position::TYPE_FIXED_GAP_START, Position::DEFAULT_GAP),
+            ),
         );
 
         $calculator->between($prev, $next);
