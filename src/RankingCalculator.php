@@ -29,14 +29,6 @@ final class RankingCalculator
             $nextToken = $next[$i] ?? $this->tokenSet->maxToken();
 
             $nextTokenIndex = $this->tokenSet->getIndex($nextToken);
-
-            if ($prevToken === $nextToken || $this->position->gap() >= $nextTokenIndex) {
-                $rank .= $prevToken;
-                $i++;
-
-                continue;
-            }
-
             $possibleTokenIndex = $this->tokenSet->getIndex($prevToken) + $this->position->gap();
 
             if ($possibleTokenIndex >= $nextTokenIndex) {
@@ -46,7 +38,7 @@ final class RankingCalculator
                 continue;
             }
 
-            $rank .= $this->tokenSet->next($this->position, $prevToken, $nextToken);
+            $rank .= $this->tokenSet->getToken($possibleTokenIndex);
 
             break;
         }
