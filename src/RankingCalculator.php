@@ -19,6 +19,9 @@ final class RankingCalculator
 
     public function between(?string $prev, ?string $next): string
     {
+        $prev ??= $this->tokenSet->minToken();
+        $next ??= \str_repeat($this->tokenSet->maxToken(), \strlen($prev));
+
         $this->assert($prev, $next);
 
         $rank = '';
@@ -45,19 +48,14 @@ final class RankingCalculator
         return $rank;
     }
 
-    private function assert(?string $prev, ?string $next): void
+    private function assert(string $prev, string $next): void
     {
-        if (null !== $prev && false === $this->tokenSet->isValid($prev)
-            || (null !== $next && false === $this->tokenSet->isValid($next))) {
+        if (false === $this->tokenSet->isValid($prev) || (false === $this->tokenSet->isValid($next))) {
             throw new InvalidInputException();
         }
 
-        if ((null !== $prev || null !== $next) && $prev === $next) {
+        if ($prev === $next) {
             throw new InvalidInputException();
-        }
-
-        if (null === $prev || null === $next) {
-            return;
         }
 
         $lexicographicOrder = [$prev, $next];
