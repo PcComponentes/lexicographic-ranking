@@ -1,8 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace PcComponentes\LexRanking\Tests\DataProvider;
+namespace PcComponentes\LexRanking\Tests\DataProvider\Alpha36;
 
-final class Alpha62Gap8Provider
+use PcComponentes\LexRanking\Tests\DataProvider\DataProvider;
+
+final class Alpha36Gap8EndProvider
 {
     public static function valid(): DataProvider
     {
@@ -11,21 +13,31 @@ final class Alpha62Gap8Provider
             {
                 parent::__construct(
                     [
-                        ['A', 'B', 'A8'],
-                        ['0', '1', '08'],
-                        ['a', 'b', 'a8'],
-                        ['Z', 'z', 'h'],
-                        ['7', 'G', 'F'],
+                        [null, '1', '0R'],
+                        ['A', 'B', 'AR'],
+                        ['0', '1', '0R'],
+                        ['0', 'Z', 'R'],
+                        [null, 'Z1', 'R'],
+                        [null, 'Y1G', 'Q'],
+                        [null, 'W13', 'O'],
+                        [null, '7', '0R'],
+                        ['07', 'H', '9'],
+                        ['Z6', 'ZZ', 'ZR'],
+                        ['FB', 'FW', 'FO'],
+                        ['F6', 'Z', 'R'],
+                        ['G', 'Z', 'R'],
+                        ['O', 'Z', 'R'],
+                        ['W', 'W8', 'W0'],
+                        ['Z6', null, 'ZR'],
+                        ['F6', null, 'R'],
+                        ['W8', 'Z', 'WR'],
+                        ['W', 'Z', 'WR'],
+                        ['7', 'G', '8'],
                         [null, 'G', '8'],
-                        ['00001', 'z', '8'],
-                        ['AsDF5T', 'AsDF5Z', 'AsDF5T8'],
-                        ['ASDF5T', 'AsDF5Z', 'Aa'],
-                        ['A', 'Az', 'A8'],
-                        ['A', 'A7', 'A08'],
-                        ['x', null, 'x8'],
-                        ['AaD3rtT', 'At', 'Ai'],
-                        ['ZNTbx8XnWx', 'imHgQJWlyw', 'h'],
-                        ['ZNTbx8XnWx', 'ZNTbx8XnWz', 'ZNTbx8XnWx8'],
+                        ['00001', 'Z', 'R'],
+                        ['ASDF5T', 'ASDF5Z', 'ASDF5TR'],
+                        ['ASDF', 'ASDF5Z', 'ASDF0R'],
+                        ['7', null, 'R'],
                     ],
                 );
             }
@@ -39,6 +51,7 @@ final class Alpha62Gap8Provider
             {
                 parent::__construct(
                     [
+                        [null, '0'],
                         ['A0', '9'],
                         ['9', '9'],
                         ['98', '8'],
@@ -46,11 +59,9 @@ final class Alpha62Gap8Provider
                         ['9', '8'],
                         ['1', '0'],
                         ['BBB', 'A'],
-                        ['bbb', 'A'],
                         ['ZZZ', '0'],
-                        ['zZZ', '0'],
                         ['ABCDA', 'ABCD'],
-                        ['aBCD', 'ABCD'],
+                        ['a', null],
                         ['\'',null],
                         ['´', null],
                         ['η', null],
@@ -58,8 +69,11 @@ final class Alpha62Gap8Provider
                         ['ك', null],
                         ['ب', null],
                         ['Б', null],
+                        ['Б1', 'Б'],
                         ['Х', null],
                         ['Ѭ', null],
+                        ['Ѭ', 'Ѭ'],
+                        [null, 'a'],
                         [null, '\''],
                         [null, '´'],
                         [null, 'η'],
@@ -69,6 +83,8 @@ final class Alpha62Gap8Provider
                         [null, 'Б'],
                         [null, 'Х'],
                         [null, 'Ѭ'],
+                        ['Z6', 'Z'],
+                        ['F6', 'F'],
                     ],
                 );
             }

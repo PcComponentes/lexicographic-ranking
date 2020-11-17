@@ -1,8 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace PcComponentes\LexRanking\Tests\DataProvider;
+namespace PcComponentes\LexRanking\Tests\DataProvider\Alpha36;
 
-final class Alpha36Gap8Provider
+use PcComponentes\LexRanking\Tests\DataProvider\DataProvider;
+
+final class Alpha36Gap8StartProvider
 {
     public static function valid(): DataProvider
     {

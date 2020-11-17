@@ -1,5 +1,7 @@
 # Lexicographic Ranking
 
+Lexicographic order calculator, useful for persisting ordered lists.
+
 ### Usage
 
 ```php

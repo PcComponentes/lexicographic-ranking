@@ -6,7 +6,7 @@ use PcComponentes\LexRanking\Exception\InvalidInputException;
 use PcComponentes\LexRanking\Position\Position;
 use PcComponentes\LexRanking\RankingCalculator;
 use PcComponentes\LexRanking\Tests\DataProvider\DataProvider;
-use PcComponentes\LexRanking\Tests\DataProvider\NumericGap8DataProvider;
+use PcComponentes\LexRanking\Tests\DataProvider\Numeric\NumericGap8StartDataProvider;
 use PcComponentes\LexRanking\Token\NumericTokenSet;
 use PHPUnit\Framework\TestCase;
 
@@ -28,7 +28,7 @@ final class NumericSetRankingCalculatorTest extends TestCase
 
     public function valid_numeric_gap8_provider(): DataProvider
     {
-        return NumericGap8DataProvider::valid();
+        return NumericGap8StartDataProvider::valid();
     }
 
     /**
@@ -49,6 +49,6 @@ final class NumericSetRankingCalculatorTest extends TestCase
 
     public function invalid_numeric_gap8_provider(): DataProvider
     {
-        return NumericGap8DataProvider::invalid();
+        return NumericGap8StartDataProvider::invalid();
     }
 }

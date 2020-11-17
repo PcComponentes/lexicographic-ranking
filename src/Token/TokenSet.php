@@ -4,6 +4,7 @@ namespace PcComponentes\LexRanking\Token;
 
 use PcComponentes\LexRanking\Exception\InvalidPositionException;
 use PcComponentes\LexRanking\Exception\InvalidInputException;
+use PcComponentes\LexRanking\Exception\InvalidTokenSetException;
 use PcComponentes\LexRanking\Position\Position;
 
 abstract class TokenSet
@@ -12,6 +13,8 @@ abstract class TokenSet
 
     protected function __construct(array $set)
     {
+        $this->assert($set);
+
         $this->set = $set;
     }
 
@@ -23,6 +26,16 @@ abstract class TokenSet
     public function maxToken(): string
     {
         return \end($this->set);
+    }
+
+    public function midToken(): string
+    {
+        return $this->set[floor(\count($this->set) / 2)];
+    }
+
+    public function maxIndex(): int
+    {
+        return \count($this->set);
     }
 
     public function getToken(int $index): string
@@ -65,7 +78,7 @@ abstract class TokenSet
         }
 
         if (Position::TYPE_FIXED_GAP_END === $position->type()) {
-            if ($this->getIndex($next) - $position->gap() < 0) {
+            if ($this->getIndex($next) - $position->gap() < $this->getIndex($prev)) {
                 return null;
             }
 
@@ -78,5 +91,18 @@ abstract class TokenSet
     public function isValid(string $input): bool
     {
         return 0 === \count(\array_diff(\str_split($input), $this->set));
+    }
+
+    private function assert(array $set): void
+    {
+        if (0 === \count($set)) {
+            throw new InvalidTokenSetException();
+        }
+
+        foreach ($set as $token) {
+            if (false === \is_string($token)) {
+                throw new InvalidTokenSetException();
+            }
+        }
     }
 }
