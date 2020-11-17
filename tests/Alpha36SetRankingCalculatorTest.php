@@ -7,6 +7,7 @@ use PcComponentes\LexRanking\Position\Position;
 use PcComponentes\LexRanking\RankingCalculator;
 use PcComponentes\LexRanking\Tests\DataProvider\Alpha36\Alpha36Gap8EndProvider;
 use PcComponentes\LexRanking\Tests\DataProvider\Alpha36\Alpha36Gap8StartProvider;
+use PcComponentes\LexRanking\Tests\DataProvider\Alpha36\Alpha36GapMidProvider;
 use PcComponentes\LexRanking\Tests\DataProvider\DataProvider;
 use PcComponentes\LexRanking\Token\Alpha36TokenSet;
 use PHPUnit\Framework\TestCase;
@@ -91,5 +92,45 @@ final class Alpha36SetRankingCalculatorTest extends TestCase
     public function invalid_alpha36_gap8_end_provider(): DataProvider
     {
         return Alpha36Gap8EndProvider::invalid();
+    }
+
+    /**
+     * @test
+     * @dataProvider valid_alpha36_gap_mid_provider
+     */
+    public function valid_alpha36_gap_mid_test(?string $prev, ?string $next, string $result): void
+    {
+        $calculator = new RankingCalculator(
+            new Alpha36TokenSet(),
+            new Position(Position::TYPE_DYNAMIC_MID, null),
+        );
+
+        $this->assertEquals($result, $calculator->between($prev, $next));
+    }
+
+    public function valid_alpha36_gap_mid_provider(): DataProvider
+    {
+        return Alpha36GapMidProvider::valid();
+    }
+
+    /**
+     * @test
+     * @dataProvider invalid_alpha36_gap_mid_provider
+     */
+    public function invalid_alpha36_gap_mid_test(?string $prev, ?string $next): void
+    {
+        $this->expectException(InvalidInputException::class);
+
+        $calculator = new RankingCalculator(
+            new Alpha36TokenSet(),
+            new Position(Position::TYPE_DYNAMIC_MID, null),
+        );
+
+        $calculator->between($prev, $next);
+    }
+
+    public function invalid_alpha36_gap_mid_provider(): DataProvider
+    {
+        return Alpha36GapMidProvider::invalid();
     }
 }

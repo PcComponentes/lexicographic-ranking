@@ -23,14 +23,14 @@ abstract class TokenSet
         return $this->set[0];
     }
 
+    public function midToken(): string
+    {
+        return $this->set[\floor(\count($this->set) / 2)];
+    }
+
     public function maxToken(): string
     {
         return \end($this->set);
-    }
-
-    public function midToken(): string
-    {
-        return $this->set[floor(\count($this->set) / 2)];
     }
 
     public function maxIndex(): int
@@ -61,8 +61,13 @@ abstract class TokenSet
     public function mid(Position $position, string $prev, string $next): ?string
     {
         if (Position::TYPE_DYNAMIC_MID === $position->type()) {
-//              TODO check if prev + gap > next -> mid = next - prev / 2
-            throw new \Exception('Mid gap type not supported yet');
+            if ($prev === $next || $this->getIndex($prev) === $this->getIndex($next) - 1) {
+                return null;
+            }
+
+            $midIndex = $this->getIndex($prev) + (int) \floor(($this->getIndex($next) - $this->getIndex($prev)) / 2);
+
+            return $this->getToken($midIndex);
         }
 
         if (null === $position->gap()) {
