@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace AdnanMula\LexRanking\Exception;
+namespace PcComponentes\LexRanking\Exception;
 
 final class InvalidInputException extends \InvalidArgumentException
 {

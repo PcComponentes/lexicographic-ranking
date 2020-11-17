@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace AdnanMula\LexRanking\Tests;
+namespace PcComponentes\LexRanking\Tests;
 
-use AdnanMula\LexRanking\Exception\InvalidPositionException;
-use AdnanMula\LexRanking\Position\Position;
-use AdnanMula\LexRanking\RankingCalculator;
-use AdnanMula\LexRanking\Token\NumericTokenSet;
+use PcComponentes\LexRanking\Exception\InvalidPositionException;
+use PcComponentes\LexRanking\Position\Position;
+use PcComponentes\LexRanking\RankingCalculator;
+use PcComponentes\LexRanking\Token\NumericTokenSet;
 use PHPUnit\Framework\TestCase;
 
 final class RankingCalculatorTest extends TestCase

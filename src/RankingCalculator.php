@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace AdnanMula\LexRanking;
+namespace PcComponentes\LexRanking;
 
-use AdnanMula\LexRanking\Exception\InvalidInputException;
-use AdnanMula\LexRanking\Position\Position;
-use AdnanMula\LexRanking\Token\TokenSet;
+use PcComponentes\LexRanking\Exception\InvalidInputException;
+use PcComponentes\LexRanking\Position\Position;
+use PcComponentes\LexRanking\Token\TokenSet;
 
 final class RankingCalculator
 {

@@ -1,8 +1,8 @@
 {
-  "name": "adnanmula/lexicographic-ranking",
-  "description": "",
+  "name": "pccomponentes/lexicographic-ranking",
+  "description": "Lexicographic order calculator, useful for persisting ordered lists.",
   "license": "MIT",
-  "type": "project",
+  "type": "library",
   "authors": [
     {
       "name": "Adnan Alfonso Mula Bakkar",
@@ -27,12 +27,12 @@
   },
   "autoload": {
     "psr-4": {
-      "AdnanMula\\LexRanking\\": "src/"
+      "PcComponentes\\LexRanking\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "AdnanMula\\LexRanking\\Tests\\": "tests/"
+      "PcComponentes\\LexRanking\\Tests\\": "tests/"
     }
   }
 }
