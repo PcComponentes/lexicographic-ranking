@@ -11,6 +11,7 @@ final class Alpha36Gap8Provider
             {
                 parent::__construct(
                     [
+                        [null, '1', '08'],
                         ['A', 'B', 'A8'],
                         ['0', '1', '08'],
                         ['0', 'Z', '8'],
@@ -27,7 +28,13 @@ final class Alpha36Gap8Provider
                         ['F6', null, 'N'],
                         ['W8', 'Z', 'WG'],
                         ['W', 'Z', 'W8'],
-                    ]
+                        ['7', 'G', 'F'],
+                        [null, 'G', '8'],
+                        ['00001', 'Z', '8'],
+                        ['ASDF5T', 'ASDF5Z', 'ASDF5T8'],
+                        ['ASDF', 'ASDF5Z', 'ASDF08'],
+                        ['7', null, 'F'],
+                    ],
                 );
             }
         };
@@ -40,6 +47,7 @@ final class Alpha36Gap8Provider
             {
                 parent::__construct(
                     [
+                        [null, '0'],
                         ['A0', '9'],
                         ['9', '9'],
                         ['98', '8'],
@@ -57,8 +65,10 @@ final class Alpha36Gap8Provider
                         ['ك', null],
                         ['ب', null],
                         ['Б', null],
+                        ['Б1', 'Б'],
                         ['Х', null],
                         ['Ѭ', null],
+                        ['Ѭ', 'Ѭ'],
                         [null, 'a'],
                         [null, '\''],
                         [null, '´'],
@@ -71,7 +81,7 @@ final class Alpha36Gap8Provider
                         [null, 'Ѭ'],
                         ['Z6', 'Z'],
                         ['F6', 'F'],
-                    ]
+                    ],
                 );
             }
         };

@@ -29,7 +29,7 @@ final class NumericGap8DataProvider
                         ['988', null, '9888'],
                         ['7', null, '78'],
                         ['0', null, '8'],
-                    ]
+                    ],
                 );
             }
         };
@@ -70,7 +70,7 @@ final class NumericGap8DataProvider
                         [null, 'Б'],
                         [null, 'Х'],
                         [null, 'Ѭ'],
-                    ]
+                    ],
                 );
             }
         };

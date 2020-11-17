@@ -2,7 +2,7 @@
 
 namespace AdnanMula\LexRanking\Exception;
 
-final class InvalidGapException extends \InvalidArgumentException
+final class InvalidPositionException extends \InvalidArgumentException
 {
     public function __construct()
     {

@@ -3,8 +3,8 @@
 namespace AdnanMula\LexRanking\Tests;
 
 use AdnanMula\LexRanking\Exception\InvalidInputException;
+use AdnanMula\LexRanking\Position\Position;
 use AdnanMula\LexRanking\RankingCalculator;
-use AdnanMula\LexRanking\RankingCalculatorConfig;
 use AdnanMula\LexRanking\Tests\DataProvider\Alpha36Gap8Provider;
 use AdnanMula\LexRanking\Tests\DataProvider\DataProvider;
 use AdnanMula\LexRanking\Token\Alpha36TokenSet;
@@ -18,7 +18,10 @@ final class Alpha36SetRankingCalculatorTest extends TestCase
      */
     public function valid_alpha36_gap8_test(?string $prev, ?string $next, string $result): void
     {
-        $calculator = new RankingCalculator(new RankingCalculatorConfig(new Alpha36TokenSet(), 8));
+        $calculator = new RankingCalculator(
+            new Alpha36TokenSet(),
+            new Position(Position::TYPE_FIXED_GAP_START, Position::DEFAULT_GAP),
+        );
 
         $this->assertEquals($result, $calculator->between($prev, $next));
     }
@@ -32,11 +35,14 @@ final class Alpha36SetRankingCalculatorTest extends TestCase
      * @test
      * @dataProvider invalid_alpha36_gap8_provider
      */
-    public function invalid_alpha36_input_test(?string $prev, ?string $next): void
+    public function invalid_alpha36_gap8_test(?string $prev, ?string $next): void
     {
         $this->expectException(InvalidInputException::class);
 
-        $calculator = new RankingCalculator(new RankingCalculatorConfig(new Alpha36TokenSet(), 8));
+        $calculator = new RankingCalculator(
+            new Alpha36TokenSet(),
+            new Position(Position::TYPE_FIXED_GAP_START, Position::DEFAULT_GAP),
+        );
 
         $calculator->between($prev, $next);
     }

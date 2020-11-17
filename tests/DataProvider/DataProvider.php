@@ -4,16 +4,18 @@ namespace AdnanMula\LexRanking\Tests\DataProvider;
 
 abstract class DataProvider implements \Iterator
 {
-    private $items;
-    private $index;
+    private array $items;
+    private int $index;
 
     protected function __construct(array $items)
     {
+        $this->assert($items);
+
         $this->items = $items;
         $this->index = 0;
     }
 
-    public function current()
+    public function current(): array
     {
         return $this->items[$this->index];
     }
@@ -23,7 +25,7 @@ abstract class DataProvider implements \Iterator
         $this->index++;
     }
 
-    public function key()
+    public function key(): int
     {
         return $this->index;
     }
@@ -36,5 +38,14 @@ abstract class DataProvider implements \Iterator
     public function rewind(): void
     {
         $this->index = 0;
+    }
+
+    private function assert(array $items): void
+    {
+        foreach ($items as $item) {
+            if (false === is_array($item)) {
+                throw new \InvalidArgumentException('Invalid DataProvider data.');
+            }
+        }
     }
 }
