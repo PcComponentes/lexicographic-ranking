@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace AdnanMula\LexRanking\Token;
+namespace PcComponentes\LexRanking\Token;
 
-use AdnanMula\LexRanking\Exception\InvalidPositionException;
-use AdnanMula\LexRanking\Exception\InvalidInputException;
-use AdnanMula\LexRanking\Position\Position;
+use PcComponentes\LexRanking\Exception\InvalidPositionException;
+use PcComponentes\LexRanking\Exception\InvalidInputException;
+use PcComponentes\LexRanking\Position\Position;
 
 abstract class TokenSet
 {

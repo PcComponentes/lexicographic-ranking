@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace AdnanMula\LexRanking\Tests\DataProvider;
+namespace PcComponentes\LexRanking\Tests\DataProvider;
 
 final class Alpha36Gap8Provider
 {

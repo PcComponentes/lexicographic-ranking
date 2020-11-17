@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace AdnanMula\LexRanking\Position;
+namespace PcComponentes\LexRanking\Position;
 
-use AdnanMula\LexRanking\Exception\InvalidPositionException;
+use PcComponentes\LexRanking\Exception\InvalidPositionException;
 
 final class Position
 {

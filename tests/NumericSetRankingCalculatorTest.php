@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace AdnanMula\LexRanking\Tests;
+namespace PcComponentes\LexRanking\Tests;
 
-use AdnanMula\LexRanking\Exception\InvalidInputException;
-use AdnanMula\LexRanking\Position\Position;
-use AdnanMula\LexRanking\RankingCalculator;
-use AdnanMula\LexRanking\Tests\DataProvider\DataProvider;
-use AdnanMula\LexRanking\Tests\DataProvider\NumericGap8DataProvider;
-use AdnanMula\LexRanking\Token\NumericTokenSet;
+use PcComponentes\LexRanking\Exception\InvalidInputException;
+use PcComponentes\LexRanking\Position\Position;
+use PcComponentes\LexRanking\RankingCalculator;
+use PcComponentes\LexRanking\Tests\DataProvider\DataProvider;
+use PcComponentes\LexRanking\Tests\DataProvider\NumericGap8DataProvider;
+use PcComponentes\LexRanking\Token\NumericTokenSet;
 use PHPUnit\Framework\TestCase;
 
 final class NumericSetRankingCalculatorTest extends TestCase

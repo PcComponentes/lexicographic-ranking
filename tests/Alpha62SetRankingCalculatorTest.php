@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace AdnanMula\LexRanking\Tests;
+namespace PcComponentes\LexRanking\Tests;
 
-use AdnanMula\LexRanking\Exception\InvalidInputException;
-use AdnanMula\LexRanking\Position\Position;
-use AdnanMula\LexRanking\RankingCalculator;
-use AdnanMula\LexRanking\Tests\DataProvider\Alpha62Gap8Provider;
-use AdnanMula\LexRanking\Tests\DataProvider\DataProvider;
-use AdnanMula\LexRanking\Token\Alpha62TokenSet;
+use PcComponentes\LexRanking\Exception\InvalidInputException;
+use PcComponentes\LexRanking\Position\Position;
+use PcComponentes\LexRanking\RankingCalculator;
+use PcComponentes\LexRanking\Tests\DataProvider\Alpha62Gap8Provider;
+use PcComponentes\LexRanking\Tests\DataProvider\DataProvider;
+use PcComponentes\LexRanking\Token\Alpha62TokenSet;
 use PHPUnit\Framework\TestCase;
 
 final class Alpha62SetRankingCalculatorTest extends TestCase
