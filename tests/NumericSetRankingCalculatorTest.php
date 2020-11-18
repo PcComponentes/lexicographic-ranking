@@ -6,7 +6,9 @@ use PcComponentes\LexRanking\Exception\InvalidInputException;
 use PcComponentes\LexRanking\Position\Position;
 use PcComponentes\LexRanking\RankingCalculator;
 use PcComponentes\LexRanking\Tests\DataProvider\DataProvider;
-use PcComponentes\LexRanking\Tests\DataProvider\Numeric\NumericGap8StartDataProvider;
+use PcComponentes\LexRanking\Tests\DataProvider\Numeric\NumericGap8EndProvider;
+use PcComponentes\LexRanking\Tests\DataProvider\Numeric\NumericGap8StartProvider;
+use PcComponentes\LexRanking\Tests\DataProvider\Numeric\NumericGapMidProvider;
 use PcComponentes\LexRanking\Token\NumericTokenSet;
 use PHPUnit\Framework\TestCase;
 
@@ -14,41 +16,121 @@ final class NumericSetRankingCalculatorTest extends TestCase
 {
     /**
      * @test
-     * @dataProvider valid_numeric_gap8_provider
+     * @dataProvider valid_numeric_gap8_start_provider
      */
-    public function valid_numeric_gap8_test(?string $prev, ?string $next, string $result): void
+    public function valid_numeric_gap8_start_test(?string $prev, ?string $next, string $result): void
     {
         $calculator = new RankingCalculator(
             new NumericTokenSet(),
-            new Position(Position::TYPE_FIXED_GAP_START, Position::DEFAULT_GAP),
+            new Position('fixed_start', 8),
         );
 
         $this->assertEquals($result, $calculator->between($prev, $next));
     }
 
-    public function valid_numeric_gap8_provider(): DataProvider
+    public function valid_numeric_gap8_start_provider(): DataProvider
     {
-        return NumericGap8StartDataProvider::valid();
+        return NumericGap8StartProvider::valid();
     }
 
     /**
      * @test
-     * @dataProvider invalid_numeric_gap8_provider
+     * @dataProvider invalid_numeric_gap8_start_provider
      */
-    public function invalid_numeric_gap8_test(?string $prev, ?string $next): void
+    public function invalid_numeric_gap8_start_test(?string $prev, ?string $next): void
     {
         $this->expectException(InvalidInputException::class);
 
         $calculator = new RankingCalculator(
             new NumericTokenSet(),
-            new Position(Position::TYPE_FIXED_GAP_START, Position::DEFAULT_GAP),
+            new Position('fixed_start', 8),
         );
 
         $calculator->between($prev, $next);
     }
 
-    public function invalid_numeric_gap8_provider(): DataProvider
+    public function invalid_numeric_gap8_start_provider(): DataProvider
     {
-        return NumericGap8StartDataProvider::invalid();
+        return NumericGap8StartProvider::invalid();
+    }
+
+    /**
+     * @test
+     * @dataProvider valid_numeric_gap8_end_provider
+     */
+    public function valid_numeric_gap8_end_test(?string $prev, ?string $next, string $result): void
+    {
+        $calculator = new RankingCalculator(
+            new NumericTokenSet(),
+            new Position('fixed_end', 8),
+        );
+
+        $this->assertEquals($result, $calculator->between($prev, $next));
+    }
+
+    public function valid_numeric_gap8_end_provider(): DataProvider
+    {
+        return NumericGap8EndProvider::valid();
+    }
+
+    /**
+     * @test
+     * @dataProvider invalid_numeric_gap8_end_provider
+     */
+    public function invalid_numeric_gap8_end_test(?string $prev, ?string $next): void
+    {
+        $this->expectException(InvalidInputException::class);
+
+        $calculator = new RankingCalculator(
+            new NumericTokenSet(),
+            new Position('fixed_end', 8),
+        );
+
+        $calculator->between($prev, $next);
+    }
+
+    public function invalid_numeric_gap8_end_provider(): DataProvider
+    {
+        return NumericGap8EndProvider::invalid();
+    }
+
+    /**
+     * @test
+     * @dataProvider valid_numeric_gap_mid_provider
+     */
+    public function valid_numeric_gap_mid_test(?string $prev, ?string $next, string $result): void
+    {
+        $calculator = new RankingCalculator(
+            new NumericTokenSet(),
+            new Position('dynamic_mid', null),
+        );
+
+        $this->assertEquals($result, $calculator->between($prev, $next));
+    }
+
+    public function valid_numeric_gap_mid_provider(): DataProvider
+    {
+        return NumericGapMidProvider::valid();
+    }
+
+    /**
+     * @test
+     * @dataProvider invalid_numeric_gap_mid_provider
+     */
+    public function invalid_numeric_gap_mid_test(?string $prev, ?string $next): void
+    {
+        $this->expectException(InvalidInputException::class);
+
+        $calculator = new RankingCalculator(
+            new NumericTokenSet(),
+            new Position('dynamic_mid', null),
+        );
+
+        $calculator->between($prev, $next);
+    }
+
+    public function invalid_numeric_gap_mid_provider(): DataProvider
+    {
+        return NumericGapMidProvider::invalid();
     }
 }

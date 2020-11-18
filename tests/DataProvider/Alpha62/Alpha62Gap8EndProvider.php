@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace PcComponentes\LexRanking\Tests\DataProvider\Numeric;
+namespace PcComponentes\LexRanking\Tests\DataProvider\Alpha62;
 
 use PcComponentes\LexRanking\Tests\DataProvider\DataProvider;
 
-final class NumericGap8StartDataProvider
+final class Alpha62Gap8EndProvider
 {
     public static function valid(): DataProvider
     {
@@ -13,24 +13,21 @@ final class NumericGap8StartDataProvider
             {
                 parent::__construct(
                     [
-                        ['0', '9', '8'],
-                        ['0', '1', '08'],
-                        ['0', '9', '8'],
-                        ['0', '9', '8'],
-                        ['0', '6', '08'],
-                        ['0', '99999999', '8'],
-                        ['1', '99999999', '18'],
-                        ['5', '22222222', '500000008'],
-                        ['0', '22222222', '000000008'],
-                        ['0', '1', '08'],
-                        ['0000000', '1', '08'],
-                        ['0', '8', '08'],
-                        ['08', '9', '8'],
-                        ['4', '99', '48'],
-                        ['8', '9', '88'],
-                        ['988', null, '9888'],
-                        ['7', null, '78'],
-                        ['0', null, '8'],
+                        ['A', 'B', 'Ar'],
+                        ['0', '1', '0r'],
+                        ['a', 'b', 'ar'],
+                        ['Z', 'z', 'r'],
+                        ['7', 'G', '8'],
+                        [null, 'G', '8'],
+                        ['00001', 'z', 'r'],
+                        ['AsDF5T', 'AsDF5Z', 'AsDF5Tr'],
+                        ['ASDF5T', 'AsDF5Z', 'Ak'],
+                        ['A', 'Az', 'Ar'],
+                        ['A', 'A7', 'A0r'],
+                        ['x', null, 'xr'],
+                        ['AaD3rtT', 'At', 'Al'],
+                        ['ZNTbx8XnWx', 'imHgQJWlyw', 'a'],
+                        ['ZNTbx8XnWx', 'ZNTbx8XnWz', 'ZNTbx8XnWxr'],
                     ],
                 );
             }
@@ -50,8 +47,12 @@ final class NumericGap8StartDataProvider
                         ['1', '-1'],
                         ['9', '8'],
                         ['1', '0'],
-                        ['a', null],
-                        ['A', null],
+                        ['BBB', 'A'],
+                        ['bbb', 'A'],
+                        ['ZZZ', '0'],
+                        ['zZZ', '0'],
+                        ['ABCDA', 'ABCD'],
+                        ['aBCD', 'ABCD'],
                         ['\'',null],
                         ['´', null],
                         ['η', null],
@@ -61,8 +62,6 @@ final class NumericGap8StartDataProvider
                         ['Б', null],
                         ['Х', null],
                         ['Ѭ', null],
-                        [null, 'a'],
-                        [null, 'A'],
                         [null, '\''],
                         [null, '´'],
                         [null, 'η'],

@@ -8,7 +8,7 @@ final class Position
 {
     public const TYPE_FIXED_GAP_START = 'fixed_start';
     public const TYPE_FIXED_GAP_END = 'fixed_end';
-    public const TYPE_DYNAMIC_MID = 'dynamic-mid';
+    public const TYPE_DYNAMIC_MID = 'dynamic_mid';
 
     public const TYPES = [
         self::TYPE_FIXED_GAP_START,

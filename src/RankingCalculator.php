@@ -63,11 +63,7 @@ final class RankingCalculator
             throw new InvalidInputException();
         }
 
-        $lexicographicOrder = [$prev, $next];
-        \natsort($lexicographicOrder);
-        $lexicographicOrder = \array_values($lexicographicOrder);
-
-        if ($lexicographicOrder[0] !== $prev || $lexicographicOrder[1] !== $next) {
+        if (\strcmp($prev, $next) >= 0) {
             throw new InvalidInputException();
         }
     }

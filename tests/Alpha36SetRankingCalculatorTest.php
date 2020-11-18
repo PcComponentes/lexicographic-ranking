@@ -22,7 +22,7 @@ final class Alpha36SetRankingCalculatorTest extends TestCase
     {
         $calculator = new RankingCalculator(
             new Alpha36TokenSet(),
-            new Position(Position::TYPE_FIXED_GAP_START, Position::DEFAULT_GAP),
+            new Position('fixed_start', 8),
         );
 
         $this->assertEquals($result, $calculator->between($prev, $next));
@@ -43,7 +43,7 @@ final class Alpha36SetRankingCalculatorTest extends TestCase
 
         $calculator = new RankingCalculator(
             new Alpha36TokenSet(),
-            new Position(Position::TYPE_FIXED_GAP_START, Position::DEFAULT_GAP),
+            new Position('fixed_start', 8),
         );
 
         $calculator->between($prev, $next);
@@ -62,7 +62,7 @@ final class Alpha36SetRankingCalculatorTest extends TestCase
     {
         $calculator = new RankingCalculator(
             new Alpha36TokenSet(),
-            new Position(Position::TYPE_FIXED_GAP_END, Position::DEFAULT_GAP),
+            new Position('fixed_end', 8),
         );
 
         $this->assertEquals($result, $calculator->between($prev, $next));
@@ -83,7 +83,7 @@ final class Alpha36SetRankingCalculatorTest extends TestCase
 
         $calculator = new RankingCalculator(
             new Alpha36TokenSet(),
-            new Position(Position::TYPE_FIXED_GAP_END, Position::DEFAULT_GAP),
+            new Position('fixed_end', 8),
         );
 
         $calculator->between($prev, $next);
@@ -102,7 +102,7 @@ final class Alpha36SetRankingCalculatorTest extends TestCase
     {
         $calculator = new RankingCalculator(
             new Alpha36TokenSet(),
-            new Position(Position::TYPE_DYNAMIC_MID, null),
+            new Position('dynamic_mid', null),
         );
 
         $this->assertEquals($result, $calculator->between($prev, $next));
@@ -123,7 +123,7 @@ final class Alpha36SetRankingCalculatorTest extends TestCase
 
         $calculator = new RankingCalculator(
             new Alpha36TokenSet(),
-            new Position(Position::TYPE_DYNAMIC_MID, null),
+            new Position('dynamic_mid', null),
         );
 
         $calculator->between($prev, $next);
