@@ -26,7 +26,7 @@ abstract class TokenSet
 
     public function midToken(): string
     {
-        return $this->set[\floor(\count($this->set) / 2)];
+        return $this->set[\floor(\count($this->set) / 2) - 1];
     }
 
     public function maxToken(): string

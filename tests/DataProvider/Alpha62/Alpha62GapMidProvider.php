@@ -14,6 +14,19 @@ final class Alpha62GapMidProvider
             {
                 parent::__construct(
                     [
+                        ['0', '1', '0U'],
+                        ['1', '2', '1U'],
+                        ['g', 'ge', 'gK'],
+                        ['ge', 'gf', 'geU'],
+                        ['geU', 'gez', 'gej'],
+                        ['6yu2jr', '7yut6iji', '6yuS'],
+                        ['6yu3jr', '7yut6ijit', '6yuT'],
+                        ['6yu4jr', '7yut6ijreti', '6yuT'],
+                        ['6yu5jr', '7yut6i4t3i', '6yuU'],
+                        ['2', 't', 'S'],
+                        ['3', 't', 'T'],
+                        ['4', 't', 'T'],
+                        ['5', 't', 'U'],
                         ['A', 'B', 'AU'],
                         ['0', '1', '0U'],
                         ['a', 'b', 'aU'],
@@ -29,6 +42,8 @@ final class Alpha62GapMidProvider
                         ['AaD3rtT', 'At', 'Aj'],
                         ['ZNTbx8XnWx', 'imHgQJWlyw', 'd'],
                         ['ZNTbx8XnWx', 'ZNTbx8XnWz', 'ZNTbx8XnWy'],
+                        ['aaaaaaaaaaaaaaaaaaaaaaaaaaab', 'aaaaaaaaaaaaaaaaaaaaaaaaaaac', 'aaaaaaaaaaaaaaaaaaaaaaaaaaabU'],
+                        ['aaaaaaaaaaaaaa', 'zzzzzzzzzz', 'm'],
                     ],
                 );
             }
