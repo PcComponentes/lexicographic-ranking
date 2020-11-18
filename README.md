@@ -2,7 +2,16 @@
 
 Lexicographic order calculator, useful for persisting ordered lists.
 
-### Usage
+
+## Installation
+
+Install via [composer](https://getcomposer.org/)
+
+```shell
+composer require pccomponentes/lexicographic-ranking
+```
+
+## Usage
 
 ```php
 $calculator = new RankingCalculator(
