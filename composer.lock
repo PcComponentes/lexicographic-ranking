@@ -4,49 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1e9903c132b2cc927e1dc0de506e9622",
+    "content-hash": "a69572bbbbf41e7ed9cf63e88f21e512",
     "packages": [],
     "packages-dev": [
-        {
-            "name": "adnanmula/coding-standard",
-            "version": "0.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/adnanmula/coding-standard.git",
-                "reference": "d203eedf9c99a91e6c90f45a658790919f1a2cd3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/adnanmula/coding-standard/zipball/d203eedf9c99a91e6c90f45a658790919f1a2cd3",
-                "reference": "d203eedf9c99a91e6c90f45a658790919f1a2cd3",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2",
-                "slevomat/coding-standard": "^6.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "AdnanMula\\CodingStandard\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Adnan Alfonso Mula Bakkar",
-                    "email": "adnan.mula.bakkar@gmail.com"
-                }
-            ],
-            "support": {
-                "issues": "https://github.com/adnanmula/coding-standard/issues",
-                "source": "https://github.com/adnanmula/coding-standard/tree/master"
-            },
-            "time": "2020-06-22T15:16:06+00:00"
-        },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
             "version": "v0.7.0",
@@ -243,6 +203,52 @@
                 }
             ],
             "time": "2020-11-13T09:40:50+00:00"
+        },
+        {
+            "name": "pccomponentes/coding-standard",
+            "version": "v1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PcComponentes/coding-standard.git",
+                "reference": "f1969ad2730c679b8880d55b90113346f26e697e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PcComponentes/coding-standard/zipball/f1969ad2730c679b8880d55b90113346f26e697e",
+                "reference": "f1969ad2730c679b8880d55b90113346f26e697e",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4",
+                "slevomat/coding-standard": "^6.4",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.0",
+                "symfony/var-dumper": "^5.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PcComponentesCodingStandard\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Zoilo Mora",
+                    "email": "zoilo.mora@pccomponentes.com"
+                }
+            ],
+            "description": "PcComponentes Coding Standard for PHP_CodeSniffer complements Consistence Coding Standard by providing sniffs with additional checks.",
+            "support": {
+                "issues": "https://github.com/PcComponentes/coding-standard/issues",
+                "source": "https://github.com/PcComponentes/coding-standard/tree/v1.2.2"
+            },
+            "time": "2020-10-20T10:01:43+00:00"
         },
         {
             "name": "phar-io/manifest",

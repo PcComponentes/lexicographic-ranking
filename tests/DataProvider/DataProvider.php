@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace PcComponentes\LexRanking\Tests\DataProvider;
 
@@ -43,7 +44,7 @@ abstract class DataProvider implements \Iterator
     private function assert(array $items): void
     {
         foreach ($items as $item) {
-            if (false === is_array($item)) {
+            if (false === \is_array($item)) {
                 throw new \InvalidArgumentException('Invalid DataProvider data.');
             }
         }
