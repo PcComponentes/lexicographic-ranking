@@ -3,6 +3,7 @@ FROM php:7.4-fpm-alpine
 RUN apk update && \
     apk add --no-cache \
         libzip-dev \
+        git \
         openssl-dev && \
     docker-php-ext-install -j$(nproc) \
         zip

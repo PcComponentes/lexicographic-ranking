@@ -16,13 +16,12 @@
         "pccomponentes/coding-standard": "^1.2",
         "phpstan/phpstan": "^0.12.55",
         "phpunit/phpunit": "^8.5",
-        "symfony/var-dumper": "^5.1"
+        "symfony/var-dumper": "^5.1",
+        "phpro/grumphp": "^1.1"
     },
     "scripts": {
         "post-install-cmd": [
-            "@auto-scripts",
-            "rm -rf .git/hooks",
-            "cp -r scripts/git-hooks .git/hooks"
+            "@auto-scripts"
         ]
     },
     "autoload": {
