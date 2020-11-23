@@ -2,7 +2,6 @@
 
 Lexicographic order calculator, useful for persisting ordered lists.
 
-
 ## Installation
 
 Install via [composer](https://getcomposer.org/)
@@ -16,7 +15,7 @@ composer require pccomponentes/lexicographic-ranking
 ```php
 $calculator = new RankingCalculator(
     new Alpha36TokenSet(),
-    new Position(Position::TYPE_FIXED_GAP_START, Position::DEFAULT_GAP)
+    new DynamicMidPosition()
 );
 
 $calculator->between('AAA', 'ZZZ');
@@ -36,7 +35,8 @@ To create a custom one extend from TokenSet.
 ### Position
 The space to be left between ranks. The following modes are available:
 ```
-Position::TYPE_FIXED_GAP_START // Leaves "gap value" amount of spaces after the first input, gap value must be specified
-Position::TYPE_FIXED_GAP_END   // Leaves "gap value" amount of spaces before the second input, gap value must be specified
-Position::TYPE_DYNAMIC_MID     // Leaves the same space before and after the result, gap value is ignored 
+FixedStartPosition  // Leaves a fixed amount of spaces after the first input
+FixedEndPosition    // Leaves a fixed amount of spaces before the second input
+DynamicMidPosition  // Leaves the same space before and after the result
 ```
+To create a custom one extend from Position. 

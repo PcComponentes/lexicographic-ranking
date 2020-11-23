@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace PcComponentes\LexRanking;
 
 use PcComponentes\LexRanking\Exception\InvalidInputException;
-use PcComponentes\LexRanking\Exception\InvalidPositionException;
 use PcComponentes\LexRanking\Position\Position;
 use PcComponentes\LexRanking\Token\TokenSet;
 
@@ -15,10 +14,6 @@ final class RankingCalculator
 
     public function __construct(TokenSet $tokenSet, Position $position)
     {
-        if ($position->gap() > $tokenSet->maxIndex()) {
-            throw new InvalidPositionException();
-        }
-
         $this->tokenSet = $tokenSet;
         $this->position = $position;
     }
@@ -37,7 +32,7 @@ final class RankingCalculator
             $prevToken = $prev[$i] ?? $this->tokenSet->minToken();
             $nextToken = $next[$i] ?? $this->tokenSet->maxToken();
 
-            $possibleToken = $this->tokenSet->mid($this->position, $prevToken, $nextToken);
+            $possibleToken = $this->position->next($this->tokenSet, $prevToken, $nextToken);
 
             if (null === $possibleToken) {
                 $rank .= $prevToken;
