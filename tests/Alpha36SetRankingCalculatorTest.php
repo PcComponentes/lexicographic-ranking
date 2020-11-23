@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace PcComponentes\LexRanking\Tests;
 
 use PcComponentes\LexRanking\Exception\InvalidInputException;
-use PcComponentes\LexRanking\Position\Position;
+use PcComponentes\LexRanking\Position\DynamicMidPosition;
+use PcComponentes\LexRanking\Position\FixedEndPosition;
+use PcComponentes\LexRanking\Position\FixedStartPosition;
 use PcComponentes\LexRanking\RankingCalculator;
 use PcComponentes\LexRanking\Tests\DataProvider\Alpha36\Alpha36Gap8EndProvider;
 use PcComponentes\LexRanking\Tests\DataProvider\Alpha36\Alpha36Gap8StartProvider;
@@ -23,7 +25,7 @@ final class Alpha36SetRankingCalculatorTest extends TestCase
     {
         $calculator = new RankingCalculator(
             new Alpha36TokenSet(),
-            new Position('fixed_start', 8),
+            new FixedStartPosition(8),
         );
 
         $this->assertEquals($result, $calculator->between($prev, $next));
@@ -44,7 +46,7 @@ final class Alpha36SetRankingCalculatorTest extends TestCase
 
         $calculator = new RankingCalculator(
             new Alpha36TokenSet(),
-            new Position('fixed_start', 8),
+            new FixedStartPosition(8),
         );
 
         $calculator->between($prev, $next);
@@ -63,7 +65,7 @@ final class Alpha36SetRankingCalculatorTest extends TestCase
     {
         $calculator = new RankingCalculator(
             new Alpha36TokenSet(),
-            new Position('fixed_end', 8),
+            new FixedEndPosition(8),
         );
 
         $this->assertEquals($result, $calculator->between($prev, $next));
@@ -84,7 +86,7 @@ final class Alpha36SetRankingCalculatorTest extends TestCase
 
         $calculator = new RankingCalculator(
             new Alpha36TokenSet(),
-            new Position('fixed_end', 8),
+            new FixedEndPosition(8),
         );
 
         $calculator->between($prev, $next);
@@ -103,7 +105,7 @@ final class Alpha36SetRankingCalculatorTest extends TestCase
     {
         $calculator = new RankingCalculator(
             new Alpha36TokenSet(),
-            new Position('dynamic_mid', null),
+            new DynamicMidPosition(),
         );
 
         $this->assertEquals($result, $calculator->between($prev, $next));
@@ -124,7 +126,7 @@ final class Alpha36SetRankingCalculatorTest extends TestCase
 
         $calculator = new RankingCalculator(
             new Alpha36TokenSet(),
-            new Position('dynamic_mid', null),
+            new DynamicMidPosition(),
         );
 
         $calculator->between($prev, $next);
