@@ -6,7 +6,7 @@ namespace PcComponentes\LexRanking\Position;
 use PcComponentes\LexRanking\Exception\InvalidPositionException;
 use PcComponentes\LexRanking\Token\TokenSet;
 
-final class FixedStartPosition extends Position
+final class FixedStartPosition implements Position
 {
     private int $gap;
 

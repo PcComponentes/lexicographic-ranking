@@ -55,10 +55,6 @@ final class RankingCalculator
             throw new InvalidInputException();
         }
 
-        if ($prev === $next) {
-            throw new InvalidInputException();
-        }
-
         if (\strcmp($prev, $next) >= 0) {
             throw new InvalidInputException();
         }

@@ -5,7 +5,7 @@ namespace PcComponentes\LexRanking\Position;
 
 use PcComponentes\LexRanking\Token\TokenSet;
 
-final class DynamicMidPosition extends Position
+final class DynamicMidPosition implements Position
 {
     public function next(TokenSet $set, string $prev, string $next): ?string
     {

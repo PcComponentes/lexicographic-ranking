@@ -39,4 +39,4 @@ FixedStartPosition  // Leaves a fixed amount of spaces after the first input
 FixedEndPosition    // Leaves a fixed amount of spaces before the second input
 DynamicMidPosition  // Leaves the same space before and after the result
 ```
-To create a custom one extend from Position. 
+To create a custom one implement Position. 

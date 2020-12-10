@@ -16,6 +16,7 @@ final class Alpha36Gap8StartProvider
                     [
                         [null, '1', '08'],
                         ['A', 'B', 'A8'],
+                        ['A', 'C', 'A8'],
                         ['0', '1', '08'],
                         ['0', 'Z', '8'],
                         [null, 'Z1', '8'],
@@ -53,6 +54,7 @@ final class Alpha36Gap8StartProvider
                         [null, '0'],
                         ['A0', '9'],
                         ['9', '9'],
+                        ['A', 'A'],
                         ['98', '8'],
                         ['1', '-1'],
                         ['9', '8'],
