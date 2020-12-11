@@ -5,9 +5,9 @@ namespace PcComponentes\LexRanking\Position;
 
 use PcComponentes\LexRanking\Token\TokenSet;
 
-abstract class Position
+interface Position
 {
-    public const DEFAULT_GAP = 8;
+    public function next(TokenSet $tokenSet, string $prev, string $next, int $offset): ?string;
 
-    abstract public function next(TokenSet $tokenSet, string $prev, string $next): ?string;
+    public function availableSpace(TokenSet $tokenSet, string $prev, string $next): int;
 }

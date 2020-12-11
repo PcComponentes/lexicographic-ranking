@@ -6,7 +6,7 @@ namespace PcComponentes\LexRanking\Position;
 use PcComponentes\LexRanking\Exception\InvalidPositionException;
 use PcComponentes\LexRanking\Token\TokenSet;
 
-final class FixedStartPosition extends Position
+final class FixedStartPosition implements Position
 {
     private int $gap;
 
@@ -17,17 +17,24 @@ final class FixedStartPosition extends Position
         $this->gap = $gap;
     }
 
-    public function next(TokenSet $set, string $prev, string $next): ?string
+    public function next(TokenSet $set, string $prev, string $next, int $offset): ?string
     {
-        if ($this->gap > $set->maxIndex()) {
+        $gap = $this->gap - $offset;
+
+        if ($gap > $set->maxIndex()) {
             throw new InvalidPositionException();
         }
 
-        if ($set->getIndex($prev) + $this->gap >= $set->getIndex($next)) {
+        if ($set->getIndex($prev) + $gap >= $set->getIndex($next)) {
             return null;
         }
 
-        return $set->getToken($set->getIndex($prev) + $this->gap);
+        return $set->getToken($set->getIndex($prev) + $gap);
+    }
+
+    public function availableSpace(TokenSet $set, string $prev, string $next): int
+    {
+        return $set->getIndex($next) - $set->getIndex($prev);
     }
 
     public function assert(int $gap): void

@@ -18,7 +18,11 @@ $calculator = new RankingCalculator(
     new DynamicMidPosition()
 );
 
-$calculator->between('AAA', 'ZZZ');
+echo $calculator->between('A', 'B');   // AU
+echo $calculator->between('F6', 'Z');  // P
+echo $calculator->between('FB', 'FW'); // FL
+echo $calculator->between(null, '7');  // 3
+echo $calculator->between(null, null); // U
 ```
 
 ## Config options
@@ -39,4 +43,4 @@ FixedStartPosition  // Leaves a fixed amount of spaces after the first input
 FixedEndPosition    // Leaves a fixed amount of spaces before the second input
 DynamicMidPosition  // Leaves the same space before and after the result
 ```
-To create a custom one extend from Position. 
+To create a custom one implement Position. 
