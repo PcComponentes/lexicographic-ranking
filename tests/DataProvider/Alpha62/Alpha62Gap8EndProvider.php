@@ -14,21 +14,22 @@ final class Alpha62Gap8EndProvider
             {
                 parent::__construct(
                     [
-                        ['A', 'B', 'Ar'],
-                        ['0', '1', '0r'],
-                        ['a', 'b', 'ar'],
+                        ['A', 'B', 'As'],
+                        ['0', '1', '0s'],
+                        ['a', 'b', 'as'],
+                        ['a', 'c', 'at'],
                         ['Z', 'z', 'r'],
                         ['7', 'G', '8'],
                         [null, 'G', '8'],
                         ['00001', 'z', 'r'],
-                        ['AsDF5T', 'AsDF5Z', 'AsDF5Tr'],
+                        ['AsDF5T', 'AsDF5Z', 'AsDF5Tx'],
                         ['ASDF5T', 'AsDF5Z', 'Ak'],
                         ['A', 'Az', 'Ar'],
-                        ['A', 'A7', 'A0r'],
-                        ['x', null, 'xr'],
+                        ['A', 'A7', 'A0y'],
+                        ['x', null, 'xt'],
                         ['AaD3rtT', 'At', 'Al'],
                         ['ZNTbx8XnWx', 'imHgQJWlyw', 'a'],
-                        ['ZNTbx8XnWx', 'ZNTbx8XnWz', 'ZNTbx8XnWxr'],
+                        ['ZNTbx8XnWx', 'ZNTbx8XnWz', 'ZNTbx8XnWxt'],
                     ],
                 );
             }

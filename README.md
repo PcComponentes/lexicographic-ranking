@@ -18,7 +18,11 @@ $calculator = new RankingCalculator(
     new DynamicMidPosition()
 );
 
-$calculator->between('AAA', 'ZZZ');
+echo $calculator->between('A', 'B');   // AU
+echo $calculator->between('F6', 'Z');  // P
+echo $calculator->between('FB', 'FW'); // FL
+echo $calculator->between(null, '7');  // 3
+echo $calculator->between(null, null); // U
 ```
 
 ## Config options

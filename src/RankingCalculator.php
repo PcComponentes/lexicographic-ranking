@@ -27,14 +27,16 @@ final class RankingCalculator
 
         $rank = '';
         $i = 0;
+        $offset = 0;
 
         while (true) {
             $prevToken = $prev[$i] ?? $this->tokenSet->minToken();
             $nextToken = $next[$i] ?? $this->tokenSet->maxToken();
 
-            $possibleToken = $this->position->next($this->tokenSet, $prevToken, $nextToken);
+            $possibleToken = $this->position->next($this->tokenSet, $prevToken, $nextToken, $offset);
 
             if (null === $possibleToken) {
+                $offset += $this->position->availableSpace($this->tokenSet, $prevToken, $nextToken);
                 $rank .= $prevToken;
                 $i++;
 

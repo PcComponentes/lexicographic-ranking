@@ -17,17 +17,24 @@ final class FixedEndPosition implements Position
         $this->gap = $gap;
     }
 
-    public function next(TokenSet $set, string $prev, string $next): ?string
+    public function next(TokenSet $set, string $prev, string $next, int $offset): ?string
     {
-        if ($this->gap > $set->maxIndex()) {
+        $gap = $this->gap - $offset;
+
+        if ($gap > $set->maxIndex()) {
             throw new InvalidPositionException();
         }
 
-        if ($set->getIndex($next) - $this->gap <= $set->getIndex($prev)) {
+        if ($set->getIndex($next) - $gap <= $set->getIndex($prev)) {
             return null;
         }
 
-        return $set->getToken($set->getIndex($next) - $this->gap);
+        return $set->getToken($set->getIndex($next) - $gap);
+    }
+
+    public function availableSpace(TokenSet $set, string $prev, string $next): int
+    {
+        return $set->getIndex($next) - $set->getIndex($prev);
     }
 
     public function assert(int $gap): void
