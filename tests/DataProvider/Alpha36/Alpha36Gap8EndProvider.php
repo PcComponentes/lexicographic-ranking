@@ -39,6 +39,10 @@ final class Alpha36Gap8EndProvider
                         ['ASDF5T', 'ASDF5Z', 'ASDF5TX'],
                         ['ASDF', 'ASDF5Z', 'ASDF0W'],
                         ['7', null, 'R'],
+                        ['0', 'Z', 'R'],
+                        [null, 'Z', 'R'],
+                        [null, 'ZZZ', 'R'],
+                        ['ZZZ', null, 'ZZZR'],
                     ],
                 );
             }

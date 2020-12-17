@@ -30,6 +30,12 @@ final class Alpha62Gap8EndProvider
                         ['AaD3rtT', 'At', 'Al'],
                         ['ZNTbx8XnWx', 'imHgQJWlyw', 'a'],
                         ['ZNTbx8XnWx', 'ZNTbx8XnWz', 'ZNTbx8XnWxt'],
+                        [null, 'z', 'r'],
+                        [null, 'zz', 'r'],
+                        [null, 'zzz', 'r'],
+                        ['z', null, 'zr'],
+                        ['zz', null, 'zzr'],
+                        ['zzz', null, 'zzzr'],
                     ],
                 );
             }

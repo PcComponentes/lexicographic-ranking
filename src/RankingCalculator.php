@@ -21,13 +21,13 @@ final class RankingCalculator
     public function between(?string $prev, ?string $next): string
     {
         $prev ??= $this->tokenSet->minToken();
-        $next ??= \str_repeat($this->tokenSet->maxToken(), \strlen($prev));
+        $next ??= \str_repeat($this->tokenSet->maxToken(), \strlen($prev) + 1);
 
         $this->assert($prev, $next);
 
+        $offset = 0;
         $rank = '';
         $i = 0;
-        $offset = 0;
 
         while (true) {
             $prevToken = $prev[$i] ?? $this->tokenSet->minToken();
