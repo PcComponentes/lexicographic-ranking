@@ -44,6 +44,12 @@ final class Alpha62GapMidProvider
                         ['ZNTbx8XnWx', 'ZNTbx8XnWz', 'ZNTbx8XnWy'],
                         ['aaaaaaaaaaaaaaaaaaaaaaaaaaab', 'aaaaaaaaaaaaaaaaaaaaaaaaaaac', 'aaaaaaaaaaaaaaaaaaaaaaaaaaabU'],
                         ['aaaaaaaaaaaaaa', 'zzzzzzzzzz', 'm'],
+                        [null, 'z', 'U'],
+                        [null, 'zz', 'U'],
+                        [null, 'zzz', 'U'],
+                        ['z', null, 'zU'],
+                        ['zz', null, 'zzU'],
+                        ['zzzz', null, 'zzzzU'],
                     ],
                 );
             }

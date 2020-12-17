@@ -40,6 +40,9 @@ final class Alpha36GapMidProvider
                         ['ASDF', 'ASDF5Z', 'ASDF2'],
                         ['7', null, 'L'],
                         ['AAA', 'ZZZ', 'M'],
+                        [null, 'Z', 'H'],
+                        [null, 'ZZZ', 'H'],
+                        ['ZZZ', null, 'ZZZH'],
                     ],
                 );
             }

@@ -36,6 +36,10 @@ final class NumericGap8StartProvider
                         ['0', null, '8'],
                         ['988', null, '9886'],
                         ['7', null, '76'],
+                        [null, '9', '8'],
+                        [null, '99', '8'],
+                        ['9', null, '98'],
+                        ['99', null, '998'],
                     ],
                 );
             }

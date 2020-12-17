@@ -32,6 +32,10 @@ final class NumericGapMidProvider
                         ['7', null, '8'],
                         ['0', null, '4'],
                         [null, null, '4'],
+                        [null, '9', '4'],
+                        [null, '99', '4'],
+                        ['9', null, '94'],
+                        ['99', null, '994'],
                     ],
                 );
             }

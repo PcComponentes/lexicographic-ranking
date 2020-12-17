@@ -29,8 +29,13 @@ final class Alpha62Gap8StartProvider
                         ['x', null, 'x6'],
                         ['AaD3rtT', 'At', 'Ai'],
                         ['ZNTbx8XnWx', 'imHgQJWlyw', 'h'],
-
                         ['ZNTbx8XnWx', 'ZNTbx8XnWz', 'ZNTbx8XnWx6'],
+                        [null, 'z', '8'],
+                        [null, 'zz', '8'],
+                        [null, 'zzz', '8'],
+                        ['z', null, 'z8'],
+                        ['zz', null, 'zz8'],
+                        ['zzz', null, 'zzz8'],
                     ],
                 );
             }
