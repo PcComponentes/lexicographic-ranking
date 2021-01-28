@@ -34,12 +34,16 @@ final class FixedStartPosition implements Position
 
     public function availableSpace(TokenSet $set, string $prev, string $next): int
     {
-        return $set->getIndex($next) - $set->getIndex($prev);
+        if ($prev === $next) {
+            return 0;
+        }
+
+        return $set->getIndex($next) - $set->getIndex($prev) - 1;
     }
 
-    public function assert(int $gap): void
+    private function assert(int $gap): void
     {
-        if (0 >= $gap) {
+        if ($gap <= 0) {
             throw new InvalidPositionException();
         }
     }
