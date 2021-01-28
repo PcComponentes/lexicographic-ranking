@@ -37,7 +37,7 @@ final class FixedEndPosition implements Position
         return $set->getIndex($next) - $set->getIndex($prev);
     }
 
-    public function assert(int $gap): void
+    private function assert(int $gap): void
     {
         if (0 >= $gap) {
             throw new InvalidPositionException();
